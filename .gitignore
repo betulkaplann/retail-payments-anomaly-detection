@@ -1,0 +1,10 @@
+# Generated dataset (26 MB) - recreated by generate_data.py
+data/*.csv
+
+# Python / Jupyter clutter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Mac system files
+.DS_Store
