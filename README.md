@@ -24,6 +24,16 @@ The simulation includes a growing Swish share and a falling cash share, the dire
 
 ![Payment mix](images/payment_mix.png)
 
+## What is simulated and what is real
+| Part | Status | Details |
+|---|---|---|
+| Transactions, cashiers and stores | **Simulated** | About 360,000 POS transactions created by `generate_data.py` |
+| Fraud cases and labels | **Simulated** | Simplified versions of known schemes (fake refunds, "sweethearting", cash voids) |
+| Payment mix trend (more Swish, less cash) | **Simulated, direction from real data** | Follows the direction in Riksbank payment statistics, not the exact levels |
+| Review cost (150 SEK) and recovery | **Assumptions** | Would come from interviews with loss-prevention teams |
+| Features, rules, Isolation Forest, net-savings evaluation | **Real** | The same code runs on real exception data |
+| SQL queries | **Real** | Standard SQL (DuckDB), checked against the pandas results by the tests |
+
 ## Method
 1. **Exceptions only**: refunds, voids and sales with ≥ 20% discount (5% of all transactions)
    - Features are built twice, in **pandas and in SQL** (`sql/exception_features.sql`), and checked to be identical
